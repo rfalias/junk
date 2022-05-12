@@ -1,0 +1,17 @@
+'hostprefix*':
+  kernel: 3.10.0-1160.59.1.el7
+  pre:
+    retrytime: 10
+    salt:
+      - test.ping: 'true'
+        retry: 2
+    cmd:
+      - uname -a: '3.10.0-1160'
+      - rabbitmqctl ping: ''
+        retry: 5
+  post:
+    retrytime: 10
+    salt:
+      - test.ping: 'true'
+    cmd:
+      - rabbitmqctl ping: ''
